@@ -1,0 +1,495 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Star Health Insurance - Digital Demo</title>
+      <!-- Google Fonts: Poppins for a professional look -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <!-- FontAwesome for Icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+      <style>
+          :root {
+              --primary-blue: #0056b3; /* Star Health Primary Blue approximation */
+              --dark-blue: #002b5c;
+              --light-blue: #e6f2ff;
+              --accent-green: #28a745; 
+              --text-dark: #333333;
+              --text-light: #666666;
+              --white: #ffffff;
+              --border-radius: 8px;
+              --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+          }
+  
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: 'Poppins', sans-serif;
+          }
+  
+          body {
+              background-color: #f4f7fa;
+              color: var(--text-dark);
+              overflow-x: hidden;
+          }
+  
+          /* --- Header / Navigation --- */
+          header {
+              background-color: var(--white);
+              box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+              position: sticky;
+              top: 0;
+              z-index: 1000;
+          }
+  
+          .nav-container {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 1rem 5%;
+              max-width: 1400px;
+              margin: 0 auto;
+          }
+  
+          .logo {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              text-decoration: none;
+          }
+  
+          .logo i {
+              color: var(--primary-blue);
+              font-size: 2rem;
+          }
+  
+          .logo-text {
+              font-weight: 700;
+              font-size: 1.5rem;
+              color: var(--dark-blue);
+          }
+  
+          .logo-text span {
+              color: var(--primary-blue);
+          }
+  
+          nav ul {
+              display: flex;
+              list-style: none;
+              gap: 2rem;
+          }
+  
+          nav a {
+              text-decoration: none;
+              color: var(--text-dark);
+              font-weight: 500;
+              font-size: 0.95rem;
+              transition: color 0.3s;
+          }
+  
+          nav a:hover {
+              color: var(--primary-blue);
+          }
+  
+          .btn-quick {
+              background-color: var(--primary-blue);
+              color: var(--white);
+              padding: 0.6rem 1.5rem;
+              border-radius: var(--border-radius);
+              text-decoration: none;
+              font-weight: 600;
+              font-size: 0.9rem;
+              transition: all 0.3s;
+              border: none;
+              cursor: pointer;
+          }
+  
+          .btn-quick:hover {
+              background-color: var(--dark-blue);
+              transform: translateY(-2px);
+          }
+  
+          /* --- Hero Section --- */
+          .hero {
+              background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+              color: var(--white);
+              padding: 6rem 5%;
+              text-align: center;
+          }
+  
+          .hero h1 {
+              font-size: 3rem;
+              font-weight: 700;
+              margin-bottom: 1.2rem;
+              line-height: 1.2;
+          }
+  
+          .hero p {
+              font-size: 1.15rem;
+              max-width: 700px;
+              margin: 0 auto 2.5rem auto;
+              opacity: 0.9;
+              font-weight: 300;
+              line-height: 1.6;
+          }
+  
+          /* --- Quick Actions Bar --- */
+          .quick-actions {
+              max-width: 1000px;
+              margin: -3rem auto 3rem auto;
+              background: var(--white);
+              border-radius: var(--border-radius);
+              box-shadow: var(--shadow);
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              overflow: hidden;
+          }
+  
+          @media (max-width: 768px) {
+              .quick-actions {
+                  grid-template-columns: repeat(2, 1fr);
+                  margin-top: 2rem;
+              }
+          }
+  
+          .action-item {
+              padding: 2rem 1rem;
+              text-align: center;
+              border-right: 1px solid #eef2f6;
+              transition: background-color 0.3s;
+              cursor: pointer;
+          }
+  
+          .action-item:last-child {
+              border-right: none;
+          }
+  
+          .action-item:hover {
+              background-color: var(--light-blue);
+          }
+  
+          .action-item i {
+              font-size: 1.8rem;
+              color: var(--primary-blue);
+              margin-bottom: 0.8rem;
+          }
+  
+          .action-item h4 {
+              font-size: 0.95rem;
+              color: var(--dark-blue);
+              font-weight: 600;
+          }
+  
+          /* --- Plans Grid --- */
+          .plans-section {
+              max-width: 1200px;
+              margin: 0 auto 5rem auto;
+              padding: 0 2rem;
+          }
+  
+          .section-header {
+              text-align: center;
+              margin-bottom: 3.5rem;
+          }
+  
+          .section-header h2 {
+              color: var(--dark-blue);
+              font-size: 2.2rem;
+              margin-bottom: 0.5rem;
+              position: relative;
+              display: inline-block;
+              padding-bottom: 0.8rem;
+          }
+  
+          .section-header h2::after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 80px;
+              height: 4px;
+              background-color: var(--primary-blue);
+              border-radius: 2px;
+          }
+  
+          .product-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+              gap: 2rem;
+          }
+  
+          .product-item {
+              background: var(--white);
+              padding: 2.5rem 2rem;
+              border-radius: var(--border-radius);
+              text-align: center;
+              transition: all 0.3s;
+              box-shadow: var(--shadow);
+              border-top: 4px solid var(--primary-blue);
+          }
+  
+          .product-item:hover {
+              transform: translateY(-8px);
+              box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+          }
+  
+          .product-item i {
+              font-size: 2.5rem;
+              color: var(--primary-blue);
+              margin-bottom: 1.5rem;
+          }
+  
+          .product-item h3 {
+              font-size: 1.2rem;
+              margin-bottom: 0.8rem;
+              color: var(--dark-blue);
+          }
+  
+          .product-item p {
+              color: var(--text-light);
+              font-size: 0.9rem;
+              line-height: 1.5;
+              margin-bottom: 1.5rem;
+          }
+  
+          /* --- Trust / Networks Section --- */
+          .trust-section {
+              background-color: var(--white);
+              padding: 4rem 5%;
+              margin-bottom: 5rem;
+          }
+  
+          .trust-grid {
+              max-width: 1200px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: 3rem;
+              align-items: center;
+          }
+  
+          .trust-content h3 {
+              color: var(--dark-blue);
+              font-size: 1.8rem;
+              margin-bottom: 1rem;
+          }
+  
+          .trust-content p {
+              color: var(--text-light);
+              line-height: 1.6;
+              margin-bottom: 1.5rem;
+          }
+  
+          .feature-list {
+              list-style: none;
+          }
+  
+          .feature-list li {
+              margin-bottom: 0.8rem;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              font-size: 0.95rem;
+              color: var(--text-dark);
+          }
+  
+          .feature-list i {
+              color: var(--accent-green);
+          }
+  
+          /* --- Footer --- */
+          footer {
+              background-color: var(--dark-blue);
+              color: var(--white);
+              padding: 4rem 5% 1.5rem 5%;
+              text-align: center;
+          }
+  
+          .footer-content {
+              max-width: 1200px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 2rem;
+              text-align: left;
+              border-bottom: 1px solid rgba(255,255,255,0.1);
+              padding-bottom: 2.5rem;
+          }
+  
+          .footer-col h4 {
+              margin-bottom: 1.2rem;
+              font-size: 1.1rem;
+              font-weight: 600;
+          }
+  
+          .footer-col ul {
+              list-style: none;
+          }
+  
+          .footer-col ul li {
+              margin-bottom: 0.6rem;
+          }
+  
+          .footer-col ul a {
+              color: rgba(255,255,255,0.73);
+              text-decoration: none;
+              font-size: 0.9rem;
+              transition: color 0.3s;
+          }
+  
+          .footer-col ul a:hover {
+              color: var(--white);
+          }
+  
+          .copyright {
+              padding-top: 1.5rem;
+              font-size: 0.85rem;
+              color: rgba(255,255,255,0.6);
+          }
+      </style>
+  </head>
+  <body>
+  
+      <!-- Header -->
+      <header>
+          <div class="nav-container">
+              <a href="#" class="logo">
+                  <i class="fa-solid fa-star-of-life"></i> <!-- Simulated Logo Icon -->
+                  <div class="logo-text">STAR<span>HEALTH</span></div>
+              </a>
+              <nav>
+                  <ul>
+                      <li><a href="#">Health Insurance</a></li>
+                      <li><a href="#">Renew</a></li>
+                      <li><a href="#">Claims</a></li>
+                      <li><a href="#">Network Hospitals</a></li>
+                  </ul>
+              </nav>
+              <button class="btn-quick">Login / Register</button>
+          </div>
+      </header>
+  
+      <!-- Hero Section -->
+      <div class="hero">
+          <h1>Protect Your Health,<br>Secure Your Future</h1>
+          <p>Expert healthcare coverage tailored for you and your family. Browse our wide range of insurance plans to find your perfect fit.</p>
+          <button class="btn-quick" style="background-color: var(--accent-green); padding: 0.8rem 2rem;">View All Plans <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></button>
+      </div>
+  
+      <!-- Quick Actions Bar -->
+      <div class="quick-actions">
+          <div class="action-item">
+              <i class="fa-solid fa-file-invoice-dollar"></i>
+              <h4>Pay Premium</h4>
+          </div>
+          <div class="action-item">
+              <i class="fa-solid fa-arrows-rotate"></i>
+              <h4>Renew Policy</h4>
+          </div>
+          <div class="action-item">
+              <i class="fa-solid fa-hand-holding-hand"></i>
+              <h4>Buy Policy</h4>
+          </div>
+          <div class="action-item">
+              <i class="fa-solid fa-hospital-user"></i>
+              <h4>File Claim</h4>
+          </div>
+      </div>
+  
+      <!-- Popular Plans Section -->
+      <div class="plans-section">
+          <div class="section-header">
+              <h2>Popular Insurance Plans</h2>
+              <p style="color: var(--text-light);">Choose from our highly rated plans designed to give you peace of mind.</p>
+          </div>
+  
+          <div class="product-grid">
+              <div class="product-item">
+                  <i class="fa-solid fa-user-shield"></i>
+                  <h3>Individual Health</h3>
+                  <p>Comprehensive health coverage tailored for individual needs with maximum benefits.</p>
+                  <a href="#" style="color: var(--primary-blue); font-weight: 600; font-size: 0.9rem; text-decoration: none;">Learn More <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i></a>
+              </div>
+              <div class="product-item">
+                  <i class="fa-solid fa-users"></i>
+                  <h3>Family Floater</h3>
+                  <p>One policy to protect your entire family against unforeseen medical emergencies.</p>
+                  <a href="#" style="color: var(--primary-blue); font-weight: 600; font-size: 0.9rem; text-decoration: none;">Learn More <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i></a>
+              </div>
+              <div class="product-item">
+                  <i class="fa-solid fa-person-cane"></i>
+                  <h3>Senior Citizen</h3>
+                  <p>Dedicated care and coverage options tailored specifically for older adults.</p>
+                  <a href="#" style="color: var(--primary-blue); font-weight: 600; font-size: 0.9rem; text-decoration: none;">Learn More <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i></a>
+              </div>
+              <div class="product-item">
+                  <i class="fa-solid fa-heart-pulse"></i>
+                  <h3>Critical Illness</h3>
+                  <p>Financial protection against major life-threatening illnesses and treatments.</p>
+                  <a href="#" style="color: var(--primary-blue); font-weight: 600; font-size: 0.9rem; text-decoration: none;">Learn More <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i></a>
+              </div>
+          </div>
+      </div>
+  
+      <!-- Trust / Networks Section -->
+      <div class="trust-section">
+          <div class="trust-grid">
+              <div class="trust-content">
+                  <h3>Why Cashless Hospitalization?</h3>
+                  <p>Focus on recovery, not paperwork. Access our extensive network of top-tier hospitals pan-India without paying out-of-pocket.</p>
+                  
+                  <ul class="feature-list">
+                      <li><i class="fa-solid fa-circle-check"></i> 14,000+ Network Hospitals</li>
+                      <li><i class="fa-solid fa-circle-check"></i> Hassle-Free Paperless Settlements</li>
+                      <li><i class="fa-solid fa-circle-check"></i> 24/7 Priority Support</li>
+                      <li><i class="fa-solid fa-circle-check"></i> Quick In-House Claim Processing</li>
+                  </ul>
+              </div>
+              
+              <div style="background-color: var(--light-blue); padding: 2.5rem; border-radius: var(--border-radius); border-left: 5px solid var(--primary-blue);">
+                  <h4 style="color: var(--dark-blue); margin-bottom: 1rem; font-size: 1.1rem;"><i class="fa-solid fa-shield-halved"></i> Quick Fact</h4>
+                  <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-dark);">Star Health is one of India's leading standalone health insurance providers, serving millions of families with reliable and transparent coverage.</p>
+              </div>
+          </div>
+      </div>
+  
+      <!-- Footer -->
+      <footer>
+          <div class="footer-content">
+              <div class="footer-col">
+                  <h4>About Star Health</h4>
+                  <ul>
+                      <li><a href="#">Overview</a></li>
+                      <li><a href="#">Awards</a></li>
+                      <li><a href="#">Careers</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Customer Support</h4>
+                  <ul>
+                      <li><a href="#">Contact Us</a></li>
+                      <li><a href="#">Locate Branch</a></li>
+                      <li><a href="#">FAQ</a></li>
+                  </ul>
+              </div>
+              <div class="footer-col">
+                  <h4>Legal</h4>
+                  <ul>
+                      <li><a href="#">Privacy Policy</a></li>
+                      <li><a href="#">Terms of Use</a></li>
+                      <li><a href="#">Disclaimer</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="copyright">
+              © 2026 Star Health and Allied Insurance Co. Ltd. All rights reserved. Simulated Demo Page.
+          </div>
+      </footer>
+  
+  </body>
+  </html>
